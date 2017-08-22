@@ -1,18 +1,22 @@
 {
-    "name": "klev/yandex-market-yml",
-    "description": "Yandex market yml",
-    "type": "library",
-    "license": "MIT",
-    "minimum-stability": "dev",
-    "authors": [
-        {
-            "name": "Kirill Levunin",
-            "email": "klevunin@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Klev\\Yandex\\YmlCreate\\": ""
-        }
+  "name": "klev/yandex-market-yml",
+  "description": "Yandex market create yml",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.0.0",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Kirill Levunin",
+      "email": "klevunin@gmail.com"
     }
+  ],
+  "require": {
+    "php": "^5.3.3 || ^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Klev\\Yandex\\YmlCreate\\": ""
+    }
+  }
 }

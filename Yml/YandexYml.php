@@ -70,7 +70,7 @@ class YandexYml
             fwrite($fh, $this->yml->saveXML());
             fclose($fh);
         } else {
-            echo 'Нет досутпа к файлу '.$sitemap_file.'!';
+            throw new NotSaveFile($file);
         }
 
     }
