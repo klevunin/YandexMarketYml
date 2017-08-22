@@ -60,7 +60,7 @@ class YandexYml
     }
 
 
-    protected function save()
+    protected function saveToFile($file)
     {
 
     }
