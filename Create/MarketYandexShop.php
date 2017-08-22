@@ -6,7 +6,7 @@ use DOMDocument;
 use DOMElement;
 use DOMAttr;
 
-class MarketYandexShop implements MarketYandex
+class MarketYandexShop
 {
     use NameSetterProperty;
     use MarketYandexBuilder;
