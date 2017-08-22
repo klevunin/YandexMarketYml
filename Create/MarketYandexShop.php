@@ -45,8 +45,6 @@ class MarketYandexShop
 
         if ($shopMethod = get_object_vars($this)) {
 
-            $shop = $dom->appendChild(new DOMElement('shop'));
-
             foreach ($shopMethod as $key => $item) {
 
                 if ($property = $this->nameGetterProperty($key)) {
@@ -55,11 +53,11 @@ class MarketYandexShop
 
                         if ($builder = $this->nameGetterProperty('builder_'.$property)) {
                             if (in_array($builder,$metod,true)) {
-                                $this->{$builder}($name,$shop);
+                                $this->{$builder}($name,$dom);
                                 continue;
                             }
                         }
-                        $shop->appendChild(new DOMElement(mb_substr($key, 5), htmlspecialchars($name)));
+                        $dom->appendChild(new DOMElement(mb_substr($key, 5), htmlspecialchars($name)));
                     }
 
                 }

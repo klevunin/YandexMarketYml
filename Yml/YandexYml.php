@@ -14,6 +14,7 @@ class YandexYml
     protected $shop;
     protected $offers;
     public $yml;
+    private $offersyml;
 
     public function __construct()
     {
@@ -26,7 +27,8 @@ class YandexYml
      */
     public function setShop(MarketYandexShop $shop)
     {
-        $this->yml = $shop->execute($this->yml);
+        $this->shop = $shop->execute($this->shop);
+        $this->offersyml = $this->shop->appendChild(new DOMElement('offers'));
     }
 
     /**
@@ -34,7 +36,7 @@ class YandexYml
      */
     public function setOffers(MarketYandexOffer $offer)
     {
-        $this->yml = $offer->execute($this->yml);
+        $this->offersyml = $offer->execute($this->offersyml);
     }
 
     /**
@@ -55,12 +57,13 @@ class YandexYml
         $xml->formatOutput = TRUE;
         $yml_catalog = $xml->appendChild(new DOMElement('yml_catalog'));
         $yml_catalog->appendChild(new DOMAttr('date', date('Y-m-d H:i:s')));
+        $this->shop = $yml_catalog->appendChild(new DOMElement('shop'));
         $this->yml = $xml;
 
     }
 
 
-    protected function saveToFile($file)
+    protected function save()
     {
 
     }
