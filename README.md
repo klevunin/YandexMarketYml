@@ -49,7 +49,7 @@ foreach ($offers as $offer) {
  $Yml->setOffers(new MarketYandexOffer($offer));
 }
 ```
->При ошибки валидации я буду кидать исключения подкласса KlevYandexYmlCreateException. 
+>При ошибки валидации я буду кидать исключения подкласса ```KlevYandexYmlCreateException```. 
 Это может быть полезно на стадии настройки. 
 
 >Вы можете запросить метод, что бы увидеть текущий результат:
