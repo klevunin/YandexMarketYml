@@ -63,8 +63,15 @@ class YandexYml
     }
 
 
-    protected function save()
+    public function saveToFile($file)
     {
+
+        if ($fh = fopen($file, "w+")) {
+            fwrite($fh, $this->yml->saveXML());
+            fclose($fh);
+        } else {
+            echo 'Нет досутпа к файлу '.$sitemap_file.'!';
+        }
 
     }
 
