@@ -19,7 +19,6 @@ trait MarketYandexBuilder
             $shop_currencies->appendChild($currencies);
         }
         $xml->appendChild($shop_currencies);
-        return $xml;
     }
 
     protected function getBuilderGetShopCategories($name,$xml)
@@ -34,7 +33,6 @@ trait MarketYandexBuilder
             $shop_categories->appendChild($categories);
         }
         $xml->appendChild($shop_categories);
-        return $xml;
     }
 
     protected function getBuilderGetShopDeliveryOptions($name,$xml)
@@ -48,7 +46,6 @@ trait MarketYandexBuilder
             $shop_delivery_options->appendChild($delivery_options);
         }
         $xml->appendChild($shop_delivery_options);
-        return $xml;
     }
 
     protected function getBuilderGetDeliveryOptions($name,$xml)
@@ -62,7 +59,6 @@ trait MarketYandexBuilder
             $shop_delivery_options->appendChild($delivery_options);
         }
         $xml->appendChild($shop_delivery_options);
-        return $xml;
     }
 
     protected function getBuilderGetPicture($name,$xml)
@@ -70,6 +66,5 @@ trait MarketYandexBuilder
         foreach ($name as $option) {
             $xml->appendChild(new DOMElement('picture', htmlspecialchars($option)));
         }
-        return $xml;
     }
 }
