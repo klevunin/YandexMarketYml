@@ -21,12 +21,19 @@ class YandexYml
     }
 
     /**
-     * @param $offers object
-     * @return object
+     * @param MarketYandexOffer $offer
      */
-    protected function setOffers(MarketYandexOffers $offers)
+    public function setOffers(MarketYandexOffer $offer)
     {
-        return $this->offers = $offers;
+        $this->offers[] = $offer->getYml();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getOffers()
+    {
+        return $this->offers;
     }
 
     protected function execute()
