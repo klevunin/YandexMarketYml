@@ -39,6 +39,37 @@ class MarketYandexShop
         }
     }
 
+    public function execute($dom)
+    {
+        $metod = get_class_methods($this);
+
+        if ($shopMethod = get_object_vars($this)) {
+
+            $shop = $dom->appendChild(new DOMElement('shop'));
+
+            foreach ($shopMethod as $key => $item) {
+
+                if ($property = $this->nameGetterProperty($key)) {
+
+                    if ($name = $this->{$property}()) {
+
+                        if ($builder = $this->nameGetterProperty('builder_'.$property)) {
+                            if (in_array($builder,$metod,true)) {
+                                $this->{$builder}($name,$shop);
+                                continue;
+                            }
+                        }
+                        $shop->appendChild(new DOMElement(mb_substr($key, 5), htmlspecialchars($name)));
+                    }
+
+                }
+
+            }
+
+            return $dom;
+        }
+
+    }
 
     public function getXml($xml = null)
     {

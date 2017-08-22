@@ -3,13 +3,22 @@
 namespace Klev\Yandex\YmlCreate\Yml;
 
 use Klev\Yandex\YmlCreate\Create\MarketYandexShop;
-use Klev\Yandex\YmlCreate\Create\MarketYandexOffers;
+use Klev\Yandex\YmlCreate\Create\MarketYandexOffer;
+use DOMImplementation;
+use DOMElement;
+use DOMAttr;
 
 class YandexYml
 {
 
     protected $shop;
     protected $offers;
+    public $yml;
+
+    public function __construct()
+    {
+        $this->execute();
+    }
 
     /**
      * @param $shop object
@@ -17,7 +26,7 @@ class YandexYml
      */
     public function setShop(MarketYandexShop $shop)
     {
-     return $this->shop = $shop;
+        $this->yml = $shop->execute($this->yml);
     }
 
     /**
@@ -25,7 +34,7 @@ class YandexYml
      */
     public function setOffers(MarketYandexOffer $offer)
     {
-        $this->offers[] = $offer->getYml();
+        $this->yml = $offer->execute($this->yml);
     }
 
     /**
@@ -46,14 +55,20 @@ class YandexYml
         $xml->formatOutput = TRUE;
         $yml_catalog = $xml->appendChild(new DOMElement('yml_catalog'));
         $yml_catalog->appendChild(new DOMAttr('date', date('Y-m-d H:i:s')));
+        $this->yml = $xml;
 
-
-        echo "!!!!<xmp>" . $xml->saveXML() . "</xmp>";
     }
 
 
     protected function save()
     {
+
+    }
+
+    public function getEchoXML()
+    {
+
+        echo "<xmp>" . $this->yml->saveXML() . "</xmp>";
 
     }
 

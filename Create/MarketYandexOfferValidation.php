@@ -47,6 +47,18 @@ class MarketYandexOfferValidation extends MarketYandexOffer
         parent::setType($type);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function setUrl($url)
+    {
+        if (!(filter_var($url, FILTER_VALIDATE_URL))) {
+            throw new NotValidationPropertyException('url');
+        }
+
+        parent::setUrl($url);
+    }
+
 
     /**
      * {@inheritdoc}

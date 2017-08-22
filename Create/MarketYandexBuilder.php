@@ -64,4 +64,12 @@ trait MarketYandexBuilder
         $xml->appendChild($shop_delivery_options);
         return $xml;
     }
+
+    protected function getBuilderGetPicture($name,$xml)
+    {
+        foreach ($name as $option) {
+            $xml->appendChild(new DOMElement('picture', htmlspecialchars($option)));
+        }
+        return $xml;
+    }
 }

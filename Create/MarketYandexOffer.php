@@ -2,11 +2,14 @@
 
 namespace Klev\Yandex\YmlCreate\Create;
 
+use DOMElement;
+use DOMAttr;
 
 class MarketYandexOffer
 {
 
     use NameSetterProperty;
+    use MarketYandexBuilder;
 
     protected $type;
     protected $id;
@@ -34,6 +37,7 @@ class MarketYandexOffer
     protected $oldprice;
     protected $price;
     protected $vat;
+    protected $url;
 
     public function __construct(array $options = array())
     {
@@ -44,6 +48,80 @@ class MarketYandexOffer
         }
     }
 
+
+    public function execute($dom)
+    {
+        $metod = get_class_methods($this);
+
+        if ($shopMethod = get_object_vars($this)) {
+
+            $offer = $this->getOffer($dom);
+            $array = ['id' => '','type' => '','available' => '','bid' => '','cbid' => '','fee' => ''];
+
+            $shopMethod = array_diff_key($shopMethod,$array);
+
+            foreach ($shopMethod as $key => $item) {
+
+                if ($property = $this->nameGetterProperty($key)) {
+
+                    if ($name = $this->{$property}()) {
+
+                        if ($builder = $this->nameGetterProperty('builder_'.$property)) {
+                            if (in_array($builder,$metod,true)) {
+                                $this->{$builder}($name,$offer);
+                                continue;
+                            }
+                        }
+
+                      $offer->appendChild(new DOMElement($key, htmlspecialchars($name)));
+                    }
+
+                }
+
+            }
+
+            return $dom;
+        }
+
+    }
+
+
+
+    private function getOffer($xml)
+    {
+
+        $offer = $xml->appendChild(new DOMElement('offer'));
+
+        if (isset($this->id)) {
+            $offer->appendChild(new DOMAttr('id', $this->id));
+        } else {
+            throw new RequiredPropertyNotFoundException('id');
+        }
+
+        if (isset($this->type)) {
+            $offer->appendChild(new DOMAttr('type', $this->type));
+        }
+
+        if (isset($this->available)) {
+            $offer->appendChild(new DOMAttr('available', $this->available));
+        }
+
+        if (isset($this->bid)) {
+            $offer->appendChild(new DOMAttr('bid', $this->bid));
+        }
+
+        if (isset($this->cbid)) {
+            $offer->appendChild(new DOMAttr('cbid', $this->cbid));
+        }
+
+        if (isset($this->fee)) {
+            $offer->appendChild(new DOMAttr('fee', $this->fee));
+        }
+
+
+        return $offer;
+
+    }
     /**
      * @return mixed
      */
@@ -464,4 +542,22 @@ class MarketYandexOffer
     {
         $this->delivery_options = $shop_delivery_options;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param mixed $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+
 }
