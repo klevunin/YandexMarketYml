@@ -1,26 +1,11 @@
 <?php
-/**
- * (C) Kirill Levunin <klevunin@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
-namespace Klev\Yandex\YmlCreate;
+namespace Klev\Yandex\YmlCreate\Create;
 
 use Klev\Yandex\YmlCreate\Exception\PropertyNotFoundException;
 use Klev\Yandex\YmlCreate\Exception\RequiredPropertyNotFoundException;
 use Klev\Yandex\YmlCreate\Exception\NotValidationPropertyException;
 
-/**
- * You can use data validation if you want
- * But I think that this is wrong.
- * The data will be checked on the Yandex side.
- * Verification makes sense if you process other people's data
- * It's better to check your data when preparing on your side, correcting them.
- *
- * @author Kirill Levunin <klevunin@gmail.com>
- */
 class MarketYandexShopValidation extends MarketYandexShop
 {
 
