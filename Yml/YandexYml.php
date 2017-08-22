@@ -15,7 +15,7 @@ class YandexYml
      * @param $shop object
      * @return object
      */
-    protected function setShop(MarketYandexShop $shop)
+    public function setShop(MarketYandexShop $shop)
     {
      return $this->shop = $shop;
     }
