@@ -15,6 +15,7 @@ class MarketYandexOffer
     protected $id;
     protected $available;
     protected $vendor;
+    protected $vendorCode;
     protected $name;
     protected $model;
     protected $typePrefix;
@@ -38,6 +39,8 @@ class MarketYandexOffer
     protected $price;
     protected $vat;
     protected $url;
+    protected $categoryId;
+    protected $currencyId;
 
     public function __construct(array $options = array())
     {
@@ -83,6 +86,22 @@ class MarketYandexOffer
             return $dom;
         }
 
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getCategoryId()
+    {
+        return $this->categoryId;
+    }
+
+    /**
+     * @param mixed $categoryId
+     */
+    protected function setCategoryId($categoryId)
+    {
+        $this->categoryId = $categoryId;
     }
 
 
@@ -546,7 +565,7 @@ class MarketYandexOffer
     /**
      * @return mixed
      */
-    public function getUrl()
+    protected function getUrl()
     {
         return $this->url;
     }
@@ -554,9 +573,41 @@ class MarketYandexOffer
     /**
      * @param mixed $url
      */
-    public function setUrl($url)
+    protected function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getCurrencyId()
+    {
+        return $this->currencyId;
+    }
+
+    /**
+     * @param mixed $currencyId
+     */
+    protected function setCurrencyId($currencyId)
+    {
+        $this->currencyId = $currencyId;
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getVendorCode()
+    {
+        return $this->vendorCode;
+    }
+
+    /**
+     * @param mixed $vendorCode
+     */
+    protected function setVendorCode($vendorCode)
+    {
+        $this->vendorCode = $vendorCode;
     }
 
 

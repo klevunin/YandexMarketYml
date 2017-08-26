@@ -38,7 +38,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    protected function setType($type)
     {
         if ((!is_string($type)) || (!in_array($type, ['vendor.model', 'medicine', 'books', 'audiobooks', 'artist.title', 'event-ticket', 'tour'], true))) {
             throw new NotValidationPropertyException('type');
@@ -50,7 +50,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setUrl($url)
+    protected function setUrl($url)
     {
         if (!(filter_var($url, FILTER_VALIDATE_URL))) {
             throw new NotValidationPropertyException('url');
@@ -63,7 +63,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setId($id)
+    protected function setId($id)
     {
         if ((is_array($id)) || (mb_strlen($id) > 20)) {
             throw new NotValidationPropertyException('id');
@@ -74,7 +74,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setAvailable($available)
+    protected function setAvailable($available)
     {
         if (!is_bool($available)) {
             throw new NotValidationPropertyException('available');
@@ -96,7 +96,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    protected function setName($name)
     {
         if (!is_string($name)) {
             throw new NotValidationPropertyException('name');
@@ -107,7 +107,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setModel($model)
+    protected function setModel($model)
     {
         if (!is_string($model)) {
             throw new NotValidationPropertyException('model');
@@ -118,7 +118,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setTypePrefix($typePrefix)
+    protected function setTypePrefix($typePrefix)
     {
         if (!is_string($typePrefix)) {
             throw new NotValidationPropertyException('typePrefix');
@@ -129,7 +129,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setPicture($picture)
+    protected function setPicture($picture)
     {
         if (!is_array($picture)) {
             throw new NotValidationPropertyException('picture');
@@ -140,7 +140,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setParam($param)
+    protected function setParam($param)
     {
         if (!is_array($param)) {
             throw new NotValidationPropertyException('param');
@@ -151,7 +151,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         if ((!is_string($description)) || (mb_strlen($description) > 3000)) {
             throw new NotValidationPropertyException('description');
@@ -162,7 +162,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setCpa($cpa)
+    protected function setCpa($cpa)
     {
         if ((!is_numeric($cpa)) || ($cpa != 0 || 1)) {
             throw new NotValidationPropertyException('cpa');
@@ -173,7 +173,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setBid($bid)
+    protected function setBid($bid)
     {
         if ((!is_numeric($bid)) || (!is_int($bid)) || ($bid <= 0)) {
             throw new NotValidationPropertyException('bid');
@@ -184,7 +184,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setCbid($cbid)
+    protected function setCbid($cbid)
     {
         if ((!is_numeric($cbid)) || (!is_int($cbid)) || ($cbid <= 0)) {
             throw new NotValidationPropertyException('cbid');
@@ -195,7 +195,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setFee($fee)
+    protected function setFee($fee)
     {
         if ((!is_numeric($fee)) || (!is_int($fee)) || ($fee <= 0)) {
             throw new NotValidationPropertyException('fee');
@@ -206,7 +206,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setSalesNotes($sales_notes)
+    protected function setSalesNotes($sales_notes)
     {
         if (!is_string($sales_notes)) {
             throw new NotValidationPropertyException('sales_notes');
@@ -217,7 +217,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setMinQuantity($min_quantity)
+    protected function setMinQuantity($min_quantity)
     {
         if ((!is_numeric($min_quantity)) || (!is_int($min_quantity)) || ($min_quantity <= 0)) {
             throw new NotValidationPropertyException('min_quantity');
@@ -228,7 +228,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setStepQuantity($step_quantity)
+    protected function setStepQuantity($step_quantity)
     {
         if ((!is_numeric($step_quantity)) || (!is_int($step_quantity)) || ($step_quantity <= 0)) {
             throw new NotValidationPropertyException('step_quantity');
@@ -239,7 +239,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setDelivery($delivery)
+    protected function setDelivery($delivery)
     {
         if (!is_bool($delivery)) {
             throw new NotValidationPropertyException('delivery');
@@ -250,7 +250,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setPickup($pickup)
+    protected function setPickup($pickup)
     {
         if (!is_bool($pickup)) {
             throw new NotValidationPropertyException('pickup');
@@ -261,7 +261,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setStore($store)
+    protected function setStore($store)
     {
         if (!is_bool($store)) {
             throw new NotValidationPropertyException('store');
@@ -272,7 +272,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setAdult($adult)
+    protected function setAdult($adult)
     {
         if ((!is_bool($adult)) || (!$adult)) {
             throw new NotValidationPropertyException('adult');
@@ -283,7 +283,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setBarcode($barcode)
+    protected function setBarcode($barcode)
     {
         if ((!is_string($barcode)) || (!ctype_digit($barcode))) {
             throw new NotValidationPropertyException('barcode');
@@ -301,9 +301,9 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setOldprice($oldprice)
+    protected function setOldprice($oldprice)
     {
-        if ((!is_string($oldprice)) || (!ctype_digit($oldprice))) {
+        if (!is_string($oldprice))  {
             throw new NotValidationPropertyException('oldprice');
         }
         parent::setOldprice($oldprice);
@@ -312,7 +312,7 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setVat($vat)
+    protected function setVat($vat)
     {
         if (!in_array($vat, ['1', 'VAT_18', '3', 'VAT_18_118', '2', 'VAT_10', '4', 'VAT_10_110', '5', 'VAT_0', '6', 'NO_VAT'], true)) {
             throw new NotValidationPropertyException('vat');
@@ -323,9 +323,9 @@ class MarketYandexOfferValidation extends MarketYandexOffer
     /**
      * {@inheritdoc}
      */
-    public function setPrice($price)
+    protected function setPrice($price)
     {
-        if ((!is_string($price)) || (!ctype_digit($price))) {
+        if (!is_string($price)) {
             throw new NotValidationPropertyException('price');
         }
         parent::setPrice($price);
@@ -357,6 +357,43 @@ class MarketYandexOfferValidation extends MarketYandexOffer
             }
         }
         parent::setDeliveryOptions($shop_delivery_options);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setCategoryId($categoryId)
+    {
+        if (!ctype_digit($categoryId)) {
+            throw new NotValidationPropertyException('categoryId');
+        }
+
+        parent::setCategoryId($categoryId);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setCurrencyId($currencyId)
+    {
+        if (!in_array($currencyId, ['RUR', 'USD', 'EUR', 'UAH', 'KZT', 'BYN'],true)) {
+            throw new NotValidationPropertyException('currencyId');
+        }
+
+        parent::setCurrencyId($currencyId);
+    }
+
+    /**
+     * @param mixed $vendorCode
+     */
+    public function setVendorCode($vendorCode)
+    {
+        if (!is_string($vendorCode)) {
+            throw new NotValidationPropertyException('vendorCode');
+        }
+
+        parent::setVendorCode($vendorCode);
+
     }
 
 }

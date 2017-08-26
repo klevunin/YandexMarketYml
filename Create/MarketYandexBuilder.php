@@ -61,10 +61,26 @@ trait MarketYandexBuilder
         $xml->appendChild($shop_delivery_options);
     }
 
+    protected function getBuilderGetParam($name,$xml)
+    {
+
+        foreach ($name as $key => $option) {
+            if (isset($option['unit']) &&  isset($option['name'])) {
+                $param_options = $xml->appendChild(new DOMElement('param',$option['name']));
+                $param_options->appendChild(new DOMAttr('name', $key));
+                $param_options->appendChild(new DOMAttr('unit', $option['unit']));
+            } else {
+                $param_options = $xml->appendChild(new DOMElement('param',$option));
+                $param_options->appendChild(new DOMAttr('name', $key));
+            }
+        }
+
+    }
+
     protected function getBuilderGetPicture($name,$xml)
     {
         foreach ($name as $option) {
-            $xml->appendChild(new DOMElement('picture', htmlspecialchars($option)));
+            $xml->appendChild(new DOMElement('picture', trim($option)));
         }
     }
 }

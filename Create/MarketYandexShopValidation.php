@@ -253,4 +253,6 @@ class MarketYandexShopValidation extends MarketYandexShop
         parent::setShopOffers($shop_offers);
     }
 
+
+
 }

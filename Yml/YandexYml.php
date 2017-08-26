@@ -70,7 +70,7 @@ class YandexYml
             fwrite($fh, $this->yml->saveXML());
             fclose($fh);
         } else {
-            throw new NotSaveFile($file);
+            echo 'Нет досутпа к файлу '.$file.'!';
         }
 
     }
